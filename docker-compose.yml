@@ -1,0 +1,11 @@
+version: '3'
+services:
+    mi-demo:
+        image: "wso2/wso2mi:1.1.0"
+        ports:
+            - "8280:8080"
+            - "8080:8080"
+            - "8043:8043"
+        volumes:
+            - ./target/capp:/home/wso2carbon/wso2mi-1.1.0/repository/deployment/server/carbonapps
+            - ./mi-home/conf/deployment.toml:/home/wso2carbon/wso2mi-1.1.0/conf/deployment.toml

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/api" name="demo" xmlns="http://ws.apache.org/ns/synapse" xmlns:dat="http://www.veva-online.ch/schemas/20200908/DataSync">
+      <resource methods="GET" uri-template="/">
+            <inSequence>
+                  <log level="custom">
+                        <property name="/api" value="inSequence" />
+                  </log>
+                  <payloadFactory media-type="json">
+                        <format>
+                              {
+                                    "Hello": "WSO2"
+                              }
+                        </format>
+                        <args>
+                        </args>
+                  </payloadFactory>
+                  <property name="messageType" value="application/json" scope="axis2" />
+                  <property name="ContentType" value="application/json" scope="axis2" />
+                  <respond/>
+            </inSequence>
+            <outSequence>
+                  <log level="custom">
+                        <property name="/api" value="outSequence" />
+                  </log>
+                  <respond />
+            </outSequence>
+            <faultSequence>
+                  <log level="custom" category="ERROR">
+                        <property name="/api" value="faultSequence" />
+                        <property name="HTTP_SC" expression="$axis2:HTTP_SC" />
+                        <property name="ERROR_MESSAGE" expression="$ctx:ERROR_MESSAGE" />
+                        <property name="ERROR_DETAIL" expression="$ctx:ERROR_DETAIL" />
+                  </log>
+                  <log level="full" />
+                  <respond />
+            </faultSequence>
+      </resource>
+</api>

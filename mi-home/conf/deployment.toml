@@ -1,0 +1,13 @@
+[server]
+hostname = "localhost"
+offset = 0
+
+[transport.http]
+listener.port = 8080
+listener.secured_port = 8043
+
+[management_api_basic_security_handler]
+enable = true
+
+[message_builders]
+text_html = "org.apache.axis2.format.PlainTextBuilder"
