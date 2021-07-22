@@ -2,7 +2,7 @@ version: '3'
 services:
     mi-test-rabbitmq:
         container_name: 'mi-test-rabbitmq'
-        image: "wso2/wso2mi:4.0.0"
+        image: "wso2/wso2mi:1.2.0"
         ports:
             - "8280:8080"
             - "8080:8080"

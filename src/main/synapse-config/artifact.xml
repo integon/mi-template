@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <artifacts>    
-     <artifact name="demo-api" type="synapse/api" serverRole="EnterpriseServiceBus" groupId="ch.admin.uvek.pegapi">
+     <artifact name="demo-api" type="synapse/api" serverRole="EnterpriseServiceBus" groupId="ch.admin.uvek.pegapi" version="1.0.0">
         <file>api/demo-api.xml</file>
+    </artifact>
+    <artifact name="rabbitmq-proxy" type="synapse/proxy-service" serverRole="EnterpriseServiceBus" groupId="ch.admin.uvek.pegapi" version="1.0.0">
+        <file>proxy-services/rabbitmq-proxy.xml</file>
+    </artifact>
+    <artifact name="rabbitmq-sender" type="synapse/proxy-service" serverRole="EnterpriseServiceBus" groupId="ch.admin.uvek.pegapi" version="1.0.0">
+        <file>proxy-services/rabbitmq-sender.xml</file>
     </artifact>
 </artifacts>
