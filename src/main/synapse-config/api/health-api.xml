@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<api context="/api" name="demo" xmlns="http://ws.apache.org/ns/synapse" xmlns:dat="http://www.veva-online.ch/schemas/20200908/DataSync">
+<api context="/health" name="health-api" xmlns="http://ws.apache.org/ns/synapse" xmlns:dat="http://www.veva-online.ch/schemas/20200908/DataSync">
       <resource methods="GET" uri-template="/">
             <inSequence>
                   <log level="custom">
-                        <property name="/api" value="inSequence" />
+                        <property name="/health" value="inSequence" />
                   </log>
                   <payloadFactory media-type="json">
                         <format>
                               {
-                                    "Hello": "WSO2"
+                                    "Status": "UP"
                               }
                         </format>
                         <args>
@@ -20,13 +20,13 @@
             </inSequence>
             <outSequence>
                   <log level="custom">
-                        <property name="/api" value="outSequence" />
+                        <property name="/health" value="outSequence" />
                   </log>
                   <respond />
             </outSequence>
             <faultSequence>
                   <log level="custom" category="ERROR">
-                        <property name="/api" value="faultSequence" />
+                        <property name="/health" value="faultSequence" />
                         <property name="HTTP_SC" expression="$axis2:HTTP_SC" />
                         <property name="ERROR_MESSAGE" expression="$ctx:ERROR_MESSAGE" />
                         <property name="ERROR_DETAIL" expression="$ctx:ERROR_DETAIL" />
