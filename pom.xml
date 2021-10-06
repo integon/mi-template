@@ -19,7 +19,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>ch.integon.wso2</groupId>
+<<<<<<< HEAD
     <artifactId>mi-template</artifactId>
+=======
+    <artifactId>mi-test-rabbitmq</artifactId>
+>>>>>>> a2f831f167dca6fa48120321af29343c9e0c9bc3
     <version>1.0.0</version>
     <name>WSO2 MI Project</name>
 

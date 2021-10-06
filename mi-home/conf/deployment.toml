@@ -11,3 +11,21 @@ enable = true
 
 [message_builders]
 text_html = "org.apache.axis2.format.PlainTextBuilder"
+
+[transport.rabbitmq]
+sender_enable = true
+listener_enable = true
+
+[[transport.rabbitmq.sender]]
+name = "AMQPConnectionFactory"
+parameter.hostname = "localhost"
+parameter.port = 5672
+parameter.username = "guest"
+parameter.password = "guest"
+
+[[transport.rabbitmq.listener]]
+name = "AMQPConnectionFactory"
+parameter.hostname = "localhost"
+parameter.port = 5672
+parameter.username = "guest"
+parameter.password = "guest"
