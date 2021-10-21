@@ -3,18 +3,24 @@ hostname = "localhost"
 offset = 0
 
 [transport.http]
-listener.port = 8080
-listener.secured_port = 8043
+#listener.port = 8280
+#listener.secured_port = 8243
 
 [management_api_basic_security_handler]
 enable = true
+
+[dashboard_config]
+dashboard_url = "https://172.30.240.1:9743/dashboard/api/"
+heartbeat_interval = 5
+group_id = "mi_template"
+node_id = "mi_template_node_1"
 
 [message_builders]
 text_html = "org.apache.axis2.format.PlainTextBuilder"
 
 [transport.rabbitmq]
-sender_enable = true
-listener_enable = true
+sender_enable = false
+listener_enable = false
 
 [[transport.rabbitmq.sender]]
 name = "AMQPConnectionFactory"

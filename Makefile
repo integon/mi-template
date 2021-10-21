@@ -18,12 +18,11 @@ docker-build:
 	docker build . -t integon/mi-template
 
 docker-push:
-#push latest
 	docker push integon/mi-template #push latest
 
 # running tests
 ## cURL "tests"
 ### data service tests
 test:
-	curl  'localhost:8280/health'
+	curl  http://localhost:8280/health
 
