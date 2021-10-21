@@ -2,9 +2,11 @@ version: '3'
 services:
     mi-template:
         image: "wso2/wso2mi:4.0.0"
+        #image: "docker.wso2.com/wso2mi:latest"
         ports:
             - "8280:8280"
             - "8243:8243"
+            - "9191:9191"
             - "9154:9154"
         volumes:
             - ./target/capp:/home/wso2carbon/wso2mi-4.0.0/repository/deployment/server/carbonapps

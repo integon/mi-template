@@ -2,12 +2,19 @@
 hostname = "localhost"
 offset = 0
 
+[user_store]
+type = "read_only_ldap"
+
 [transport.http]
 #listener.port = 8280
 #listener.secured_port = 8243
 
-[management_api_basic_security_handler]
-enable = true
+[mediation]
+#internal_http_api_port = 9191
+#internal_https_api_port = 9154
+
+#[management_api_basic_security_handler]
+#enable = true
 
 [dashboard_config]
 dashboard_url = "https://172.30.240.1:9743/dashboard/api/"
