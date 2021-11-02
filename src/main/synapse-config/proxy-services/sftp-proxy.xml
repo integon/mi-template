@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<proxy name="sftp-proxy" startOnLoad="true" transports="bapi" xmlns="http://ws.apache.org/ns/synapse">
+<proxy name="sftp-proxy" startOnLoad="true" transports="vfs" xmlns="http://ws.apache.org/ns/synapse">
     <parameter name="transport.vfs.FileURI">file://C:/WSO2/Demo</parameter>
     <parameter name="transport.vfs.ContentType">application/xml</parameter>
     <parameter name="transport.vfs.FileNamePattern">.*\.xml</parameter>
@@ -14,10 +14,6 @@
             <log level="custom">
                 <property name="status" value="message received"/>
             </log>
-			<log level="custom">
-                <property name="status" expression="$body/*/text()"/>
-            </log>
-
             <drop/>
         </inSequence>
         <outSequence>
