@@ -15,6 +15,10 @@ type = "read_only_ldap"
 
 #[management_api_basic_security_handler]
 #enable = true
+[[internal_apis.users]]
+user.name = "admin"
+user.password = "asdf"
+
 
 [dashboard_config]
 dashboard_url = "https://172.30.240.1:9743/dashboard/api/"
@@ -24,6 +28,10 @@ node_id = "mi_template_node_1"
 
 [message_builders]
 text_html = "org.apache.axis2.format.PlainTextBuilder"
+
+[transport.vfs]
+listener.enabled = true
+
 
 [transport.rabbitmq]
 sender_enable = false

@@ -11,3 +11,4 @@ services:
         volumes:
             - ./target/capp:/home/wso2carbon/wso2mi-4.0.0/repository/deployment/server/carbonapps
             - ./mi-home/conf/deployment.toml:/home/wso2carbon/wso2mi-4.0.0/conf/deployment.toml
+            - ./mi-home/conf/log4j2.properties:/home/wso2carbon/wso2mi-4.0.0/conf/log4j2.properties

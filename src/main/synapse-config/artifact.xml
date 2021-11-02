@@ -3,4 +3,6 @@
      <artifact name="health-api" type="synapse/api" serverRole="EnterpriseServiceBus" groupId="ch.admin.uvek.pegapi" version="1.0.0">
         <file>api/health-api.xml</file>
     </artifact>
+<artifact name="sftp-proxy" type="synapse/proxy-service" serverRole="EnterpriseServiceBus" groupId="ch.integon.wso2" version="1.0.0">
+    <file>proxy-services/sftp-proxy.xml</file></artifact>
 </artifacts>

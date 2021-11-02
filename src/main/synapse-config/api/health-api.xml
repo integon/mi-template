@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<api context="/health" name="health-api" xmlns="http://ws.apache.org/ns/synapse" xmlns:dat="http://www.veva-online.ch/schemas/20200908/DataSync">
+<api context="/health" name="health-api" xmlns="http://ws.apache.org/ns/synapse" trace="enable" statistics="enable">
       <resource methods="GET" uri-template="/">
             <inSequence>
                   <log level="custom">
