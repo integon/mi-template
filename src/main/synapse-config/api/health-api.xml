@@ -35,4 +35,47 @@
                   <respond />
             </faultSequence>
       </resource>
+      <resource methods="GET" uri-template="/webhook">
+            <inSequence>
+                  <log level="custom">
+                        <property name="/health" value="inSequence" />
+                  </log>
+                  <payloadFactory media-type="json">
+                        <format>
+                              {
+                                    "Status": "UP"
+                              }
+                        </format>
+                        <args>
+                        </args>
+                  </payloadFactory>
+                  <property name="messageType" value="application/json" scope="axis2" />
+                  <property name="ContentType" value="application/json" scope="axis2" />
+                  <call>
+                        <endpoint>
+                              <http method="PUT" uri-template="https://webhook.site/demo"></http>
+                        </endpoint>
+                  </call>
+                  <log level="full">
+                        <property name="response from webhook api"/>
+                  </log>
+                  <respond/>
+            </inSequence>
+            <outSequence>
+                  <log level="custom">
+                        <property name="/health" value="outSequence" />
+                  </log>
+                  <respond />
+            </outSequence>
+            <faultSequence>
+                  <log level="custom" category="ERROR">
+                        <property name="/health" value="faultSequence" />
+                        <property name="HTTP_SC" expression="$axis2:HTTP_SC" />
+                        <property name="ERROR_MESSAGE" expression="$ctx:ERROR_MESSAGE" />
+                        <property name="ERROR_DETAIL" expression="$ctx:ERROR_DETAIL" />
+                  </log>
+                  <log level="full" />
+                  <respond />
+            </faultSequence>
+      </resource>
 </api>
