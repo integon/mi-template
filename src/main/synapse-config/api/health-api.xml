@@ -57,7 +57,7 @@
                         </endpoint>
                   </call>
                   <log level="full">
-                        <property name="response from webhook api"/>
+                        <property name="response from webhook api" value="end"/>
                   </log>
                   <respond/>
             </inSequence>
