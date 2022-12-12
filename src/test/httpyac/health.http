@@ -1,0 +1,43 @@
+@host=https://{{MI_HOST}}:8243
+
+/*
+Simple health test without any dependencies
+*/
+GET /health
+{{
+    test.status(200);
+    test.hasResponseBody();
+}}
+
+###
+
+/*
+Health test with header checking without any dependencies
+*/
+GET /health
+{{
+    test.status(200);
+    test.hasResponseBody();
+    test.header("Content-Type", "application/json; charset=UTF-8");
+}}
+
+###
+
+/*
+Health test with chai dependency for more complex tests 
+*/
+GET /health
+{{
+    // standard test without dependencies
+    test.status(200);
+    test.hasResponseBody();
+    test.header("Content-Type", "application/json; charset=UTF-8");
+
+    // additional javascript specific test using the specialized chai library
+    const expect = require('chai').expect;
+    test('Status should be "UP"', () => {
+        expect(response.parsedBody.Status).to.equal('UP');
+    });
+}}
+
+
