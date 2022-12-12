@@ -1,7 +1,7 @@
 version: '3.3'
 services:
     mi-template:
-        image: "wso2/wso2mi:4.1.0"
+        image: "docker.io/wso2/wso2mi:4.1.0-multiarch"
         #image: "docker.wso2.com/wso2mi:latest"
         ports:
             - "8280:8280"
