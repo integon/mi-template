@@ -1,19 +1,19 @@
 # Template Micro Integrator for Visual Studio Code
 This is a sample project for the WSO2 Micro Integrator
 
-Build with Maven:
+### Build
 
-    mvn clean install
+- Build car with Maven: `mvn clean package`
+- Run on Docker: `docker-compose up`
+- Call the Demo API: `curl -k https://localhost:8243/health`
 
-Run on Docker:
+### Test
 
-    docker-compose up
+See [test-with-httpyac](docs/modules/ROOT/pages/test-with-httpyac.adoc).
 
-Call the Demo API
 
-    curl http://localhost:8280/health
+### Makefile
 
-# Makefile
 ## Build
 
     make build

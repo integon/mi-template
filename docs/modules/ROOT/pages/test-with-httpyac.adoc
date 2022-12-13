@@ -1,0 +1,87 @@
+ifdef::env-github[]
+:imagesdir: ../assets/images
+endif::[]
+:xrefstyle: short
+
+= Test With HttpYac & Chai
+HttpYac is a simple NodeJs testing client. HttpYac test files use the `.http` extension and
+it supports two testing modes:
+
+* with the Visual Studio Code extension
+* with the HttpYac CLI
+
+The Visual Studio Code extension is used to quickly test inside VSCode, while the 
+HttpYac CLI is used in the CI/CD pipeline.
+
+== Test With the HttpYac VSCode Extension
+. Install the 
+https://marketplace.visualstudio.com/items?itemName=anweber.vscode-httpyac[HttpYac VSCode extension].
+
+. Let's start with a basic example taken from
+the https://github.com/integonch/mi-template[mi-template] repository:
+Create the three files shown in <<test-folder-structure>>.
++
+.Test Folder Structure
+[source#test-folder-structure, console]
+----
+src/test
+└── httpyac
+    ├── .env <1>
+    ├── health.http <2>
+    └── local.env <3>
+----
+<1> The global environment file, see <<global-env>>
+<2> The test file, see <<health>>
+<3> The local environment file, see <<local-env>>
++
+.The health.http File
+[source#health,http]
+----
+@host=https://{{MI_HOST}}:8243
+
+/*
+Simple health test without any dependencies
+*/
+GET /health
+{{
+    test.status(200);
+    test.hasResponseBody();
+}}
+----
++
+.The .env File: 
+[source#global-env, env]
+----
+request_rejectUnauthorized=false <1>
+----
+<1> Trusts the self-signed WSO2 certificate so that we can directly test with https.
++
+.The local.env File
+[source#local-env, env]
+----
+MI_HOST=localhost
+----
+
+. Click on _env_ at the top of the `health.http` file and select the local environment
+as shown in <<img-httpyac-vscode>>.
++
+.The HttpYac VSCode Extension in Action
+[#img-httpyac-vscode]
+image::httpyac-vscode.png[HttpYac VSCode Extension in Action]
+
+. Start the Micro Integrator with the commands shown in <<start-mi>>.
++
+.Start the Micro Integrator
+[source#start-mi, bash]
+----
+mvn clean package
+docker compose up
+----
+
+. Click on _send_ as shown in <<img-httpyac-vscode>> to run the test and a new
+window on the rigth side opens with the received json answer. You can
+click on _TestResults_ or _content_type_ to get a detailed view of the
+sent request and received response including headers. This is especially useful
+for investigating errors.
+
+== Test With the HttpYac CLI

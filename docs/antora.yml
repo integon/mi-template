@@ -1,0 +1,5 @@
+name   : wso2
+version: 1.0.0
+title  : WSO2
+nav    :
+  - modules/ROOT/nav.adoc
