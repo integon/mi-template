@@ -24,7 +24,9 @@ GET /health
 ###
 
 /*
-Health test with chai dependency for more complex tests 
+Health test with chai dependency for more complex tests. This test does not 
+work inside the httpYac VSCode extension unless you have chai installed with npm.
+In the Docker image, however, chai is already installed and the test will work.
 */
 GET /health
 {{
