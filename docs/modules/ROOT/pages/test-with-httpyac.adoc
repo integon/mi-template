@@ -1,5 +1,6 @@
 ifdef::env-github[]
 :imagesdir: ../assets/images
+:important-caption: :heavy_exclamation_mark:
 endif::[]
 :xrefstyle: short
 
@@ -260,8 +261,7 @@ GET /health
 }}
 ----
 <1> We use the `@host` directive to set the host for all tests in the file.
-In addition, we inject the `MI_HOST` environment variable with the `{{MI_HOST}}`
-syntax.
+In addition, we inject the `MI_HOST` environment variable.
 <2> Comment lines are used to describe the test. This output is shown in the
 console when the test is executed.
 <3> The `\###` line is used to separate the tests.
