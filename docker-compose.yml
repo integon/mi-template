@@ -21,11 +21,11 @@ services:
 
     test:
       build:
-        context: ./src/test/docker
-        dockerfile: httpyac-Dockerfile
+        context: .
+        dockerfile: docker/test/Dockerfile
       volumes:
         - ./src/test/httpyac:/app/httpyac
-      command: ["httpyac", "-a", "-o", "short", "-e", "docker" ]
+      command: ["httpyac", "-a", "-o", "short", "-e", "docker-compose" ]
       depends_on:
         mi-template:
           condition: service_healthy
