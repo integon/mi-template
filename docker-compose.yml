@@ -1,13 +1,33 @@
 version: '3.3'
 services:
     mi-template:
-        image: "wso2/wso2mi:4.1.0"
+        image: "docker.io/wso2/wso2mi:4.1.0-multiarch"
         #image: "docker.wso2.com/wso2mi:latest"
         ports:
             - "8280:8280"
             - "8243:8243"
             - "9191:9191"
             - "9154:9154"
+        healthcheck:
+          test        : [ "CMD", "curl", "-f", "http://localhost:9191/healthz" ]
+          interval    : 1s
+          timeout     : 2s
+          retries     : 3
+          start_period: 5s
+
         volumes:
             - ./target/capp:/home/wso2carbon/wso2mi-4.1.0/repository/deployment/server/carbonapps
             - ./mi-home/conf/deployment.toml:/home/wso2carbon/wso2mi-4.1.0/conf/deployment.toml
+
+    test:
+      build:
+        context: .
+        dockerfile: docker/test/Dockerfile
+      volumes:
+        - ./src/test/httpyac:/app/httpyac
+      command: ["httpyac", "-a", "-o", "short", "-e", "docker-compose" ]
+      depends_on:
+        mi-template:
+          condition: service_healthy
+
+

@@ -1,19 +1,28 @@
 # Template Micro Integrator for Visual Studio Code
 This is a sample project for the WSO2 Micro Integrator
 
-Build with Maven:
+### Build
 
-    mvn clean install
+- Build car with Maven: `mvn clean package`
+- Run on Docker: `docker-compose up`
+- Call the Demo API: `curl -k https://localhost:8243/health`
 
-Run on Docker:
+### Test
 
-    docker-compose up
+HttpYac is used to test the Micro Integrator and the tests are automatically run with `docker compose up`. However you can also manually run the tests with:
 
-Call the Demo API
+```bash
+docker run -it --rm -v $(pwd)/src/test/httpyac:/app/httpyac httpyac:5.8.2 \
+    "httpyac" -a -o short -e docker
+```
 
-    curl http://localhost:8280/health
+See the
+[Test with HttpYac](https://integon.gitlab.io/docs/wiki/wso2/1.0.0/test-with-httpyac.html) 
+for more details on how this works.
 
-# Makefile
+
+### Makefile
+
 ## Build
 
     make build
