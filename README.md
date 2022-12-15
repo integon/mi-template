@@ -9,7 +9,16 @@ This is a sample project for the WSO2 Micro Integrator
 
 ### Test
 
-See [test-with-httpyac](docs/modules/ROOT/pages/test-with-httpyac.adoc).
+HttpYac is used to test the Micro Integrator and the tests are automatically run with `docker compose up`. However you can also manually run the tests with:
+
+```bash
+docker run -it --rm -v $(pwd)/src/test/httpyac:/app/httpyac httpyac:5.8.2 \
+    "httpyac" -a -o short -e docker
+```
+
+See the
+[Test with HttpYac](https://integon.gitlab.io/docs/wiki/wso2/1.0.0/test-with-httpyac.html) 
+for more details on how this works.
 
 
 ### Makefile
