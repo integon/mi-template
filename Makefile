@@ -17,6 +17,9 @@ clean:
 	rm -f target/capp/*.jar target/capp/*.car
 	-rmdir target/capp
 
+docker-test:
+	docker run -it --rm -v $(pwd)/src/test/httpyac:/app/httpyac httpyac:5.8.2 "httpyac" -a -o short -e docker
+
 docker-build:
 	docker build . -t integon/mi-template
 
