@@ -1,3 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<artifacts>    
+<artifacts>
+    <artifact name="test_xsl" type="registry/resource" serverRole="EnterpriseIntegrator" version="1.0.0">
+        <item>
+            <file>test.xsl</file>
+            <path>/_system/config</path>
+            <mediaType>application/xsl+xml</mediaType>
+        </item>
+    </artifact>
 </artifacts>

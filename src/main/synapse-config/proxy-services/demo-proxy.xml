@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy name="demo-proxy" startOnLoad="true" transports="http" xmlns="http://ws.apache.org/ns/synapse">
+    <target>
+        <inSequence>
+            <log level="custom">
+                <property name="demo-proxy" value="inSequence"/>
+            </log>
+            <respond/>
+        </inSequence>
+        <faultSequence>
+            <log level="custom" category="ERROR">
+                <property name="demo-proy" value="faultSequence" />
+                <property name="HTTP_SC" expression="$axis2:HTTP_SC" />
+                <property name="ERROR_MESSAGE" expression="$ctx:ERROR_MESSAGE" />
+                <property name="ERROR_DETAIL" expression="$ctx:ERROR_DETAIL" />
+            </log>
+        </faultSequence>
+    </target>
+</proxy>

@@ -1,6 +1,7 @@
 [server]
 hostname = "localhost"
 offset = 0
+strict_service_path_validation = true
 
 [user_store]
 type = "read_only_ldap"

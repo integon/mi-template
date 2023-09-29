@@ -7,7 +7,7 @@ remote-token=eyJraWQiOiIyYzVkMTJmNC02NmQzLTQxMzYtODJiZC00YWFkN2JiY2Q3YjkiLCJhbGc
 all: build run
 
 build:
-	mvn clean install
+	mvn clean package
 
 run:
 	docker compose up
