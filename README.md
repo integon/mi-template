@@ -1,6 +1,6 @@
-# WSO2 Micro-Integrator 4.2 Developer Template
+# WSO2 Micro-Integrator 4.2.0 Developer Template
 
-This repository contains a developer template for WSO2 Micro-Integrator 4.2, equipped with a Makefile that simplifies common development tasks.
+This repository contains a developer template for WSO2 Micro-Integrator 4.2.0, equipped with a Makefile that simplifies common development tasks.
 
 ## Prerequisites
 Before you begin, ensure you have the following tools installed on your machine:
