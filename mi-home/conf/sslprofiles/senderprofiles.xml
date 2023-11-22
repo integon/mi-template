@@ -1,0 +1,10 @@
+<parameter name="customSSLProfiles">
+   <profile>
+      <servers>some-server.local</servers>
+      <TrustStore>         
+         <Location>repository/resources/security/some-truststore.jks</Location>
+         <Type>JKS</Type>
+         <Password>changeit</Password>
+      </TrustStore>
+   </profile>
+</parameter>
