@@ -22,5 +22,11 @@ delete:
 fresh:	stop delete clean build run
 
 test:
-	curl  http://localhost:8080/health
+	curl -v http://localhost:8080/health
+
+compose-up:
+	podman-compose up
+
+compose-down:
+	podman-compose down
 

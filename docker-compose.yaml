@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+    mi-template:
+        image: "ghcr.io/integon/wso2mi:4.2.0"
+        ports:
+            - "8080:8080"
+            - "8043:8043"
+            - "9191:9191"
+            - "9154:9154"
+        volumes:
+            - ./mi-home/carbonapps:/home/wso2carbon/wso2mi-4.2.0/repository/deployment/server/carbonapps
+            - ./mi-home/lib:/home/wso2carbon/wso2mi-4.2.0/lib
+            - ./mi-home/conf/deployment.toml:/home/wso2carbon/wso2mi-4.2.0/conf/deployment.toml
+            - ./mi-home/conf/log4j2.properties:/home/wso2carbon/wso2mi-4.2.0/conf/log4j2.properties
+            - ./mi-home/conf/sslprofiles/senderprofiles.xml:/home/wso2carbon/wso2mi-4.2.0/conf/sslprofiles/senderprofiles.xml
+            - ./mi-home/security/some-truststore.jks:/home/wso2carbon/wso2mi-4.2.0/repository/resources/security/some-truststore.jks
