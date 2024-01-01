@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mi-example-deployment
+spec:
+  replicas: 1
+  selector: 
+    matchLabels:
+      app.kubernetes.io/name: mi-example-project
+  minReadySeconds: 30
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        deployment: mi-example-project
+        app.kubernetes.io/name: mi-example-project
+    spec:
+      containers:
+      - name: mi-test
+        image: git.home/tekton/mi-example:1.0.0
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "250m"
+          limits:
+            memory: "1Gi"
+            cpu: "350m"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 45
+          periodSeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 45
+          periodSeconds: 5
+          timeoutSeconds: 4
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        - containerPort: 8043
+          protocol: TCP

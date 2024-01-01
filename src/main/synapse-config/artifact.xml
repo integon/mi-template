@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <artifacts>
-     <artifact name="health-api" type="synapse/api" serverRole="EnterpriseServiceBus" groupId="ch.integon.wso2" version="1.0.0">
-        <file>api/health-api.xml</file>
+    <artifact name="hello-api" type="synapse/api" serverRole="EnterpriseServiceBus" groupId="ch.integon.example"
+              version="1.0.0">
+        <file>api/hello-api.xml</file>
     </artifact>
-    <artifact name="demo-proxy" type="synapse/proxy-service" serverRole="EnterpriseServiceBus" groupId="ch.integon.wso2" version="1.0.0">
-        <file>proxy-services/demo-proxy.xml</file>
+    <artifact name="health-api" type="synapse/api" serverRole="EnterpriseServiceBus" groupId="ch.integon.example"
+              version="1.0.0">
+        <file>api/health-api.xml</file>
     </artifact>
 </artifacts>

@@ -6,13 +6,8 @@
                         <property name="/health" value="inSequence" />
                   </log>
                   <payloadFactory media-type="json">
-                        <format>
-                              {
-                                    "Status": "UP"
-                              }
-                        </format>
-                        <args>
-                        </args>
+                        <format>{"Status": "UP"}</format>
+                        <args/>
                   </payloadFactory>
                   <property name="messageType" value="application/json" scope="axis2" />
                   <property name="ContentType" value="application/json" scope="axis2" />

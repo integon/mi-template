@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/hello" name="hello-api"
+    xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="GET" uri-template="*">
+        <inSequence>
+            <log level="custom">
+                <property name="/hello" value="inSequence"/>
+            </log>
+            <class name="ch.integon.example.EXAMPLEMediator">
+                <property name="action" value="foo" />
+            </class>
+            <payloadFactory media-type="json">
+                <format>$1</format>
+                <args>
+                    <arg evaluator="json" expression="$."></arg>
+                </args>
+            </payloadFactory>
+	    
+	    <log level="custom">
+                <property name="payload-after-medaitor" expression="$body" />
+            </log>
+
+            <property name="ContentType" value="application/json" scope="axis2"/>
+            <property name="messageType" value="application/json" scope="axis2"/>
+
+
+            <respond />
+        </inSequence>
+        <outSequence>
+            <log level="custom">
+                <property name="/hello" value="outSequence"/>
+            </log>
+            <respond/>
+        </outSequence>
+        <faultSequence>
+            <log level="custom">
+                <property name="/hello" value="faultSequence"/>
+            </log>
+            <respond/>
+        </faultSequence>
+    </resource>
+</api>
