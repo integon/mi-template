@@ -1,15 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<api context="/health" name="health-api"
-    xmlns="http://ws.apache.org/ns/synapse">
-    <resource methods="GET" uri-template="*">
-        <inSequence>
-            <respond />
-        </inSequence>
-        <outSequence>
-            <respond/>
-        </outSequence>
-        <faultSequence>
-            <respond/>
-        </faultSequence>
-    </resource>
+<api context="/health" name="health-api" xmlns="http://ws.apache.org/ns/synapse" trace="enable" statistics="enable">
+      <resource methods="GET" uri-template="/">
+            <inSequence>
+                  <log level="custom">
+                        <property name="/health" value="inSequence" />
+                  </log>
+                  <payloadFactory media-type="json">
+                        <format>{"Status": "UP"}</format>
+                        <args/>
+                  </payloadFactory>
+                  <property name="messageType" value="application/json" scope="axis2" />
+                  <property name="ContentType" value="application/json" scope="axis2" />
+                  <respond/>
+            </inSequence>
+            <outSequence>
+                  <log level="custom">
+                        <property name="/health" value="outSequence" />
+                  </log>
+                  <respond />
+            </outSequence>
+            <faultSequence>
+                  <log level="custom" category="ERROR">
+                        <property name="/health" value="faultSequence" />
+                        <property name="HTTP_SC" expression="$axis2:HTTP_SC" />
+                        <property name="ERROR_MESSAGE" expression="$ctx:ERROR_MESSAGE" />
+                        <property name="ERROR_DETAIL" expression="$ctx:ERROR_DETAIL" />
+                  </log>
+                  <log level="full" />
+                  <respond />
+            </faultSequence>
+      </resource>
 </api>
