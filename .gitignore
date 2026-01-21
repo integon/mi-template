@@ -1,2 +1,4 @@
 /target
 .vscode
+/mi-home/carbonapps/*.car
+/mi-home/lib/*.jar

@@ -5,8 +5,8 @@ offset = 0
 [transport.http]
 listener.port = 8080
 listener.secured_port = 8043
-sender.ssl_profile.file_path = "conf/sslprofiles/senderprofiles.xml"
-sender.ssl_profile.read_interval = 600000
+#sender.ssl_profile.file_path = "conf/sslprofiles/senderprofiles.xml"
+#sender.ssl_profile.read_interval = 600000
 
 [management_api_basic_security_handler]
 enable = true
